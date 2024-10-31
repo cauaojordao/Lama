@@ -1,9 +1,10 @@
+import styles from "./Blog.module.css"
+
 const BlogPage = () => {
+
     return (
-        <div>
-            <h1>Blog Page</h1>
-        </div>
-    );
+        <div className={styles.container}></div>
+    )
 }
 
-export default BlogPage
+export default BlogPage;
