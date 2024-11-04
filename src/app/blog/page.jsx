@@ -1,9 +1,15 @@
+import Postcard from "@/components/Postcard";
 import styles from "./Blog.module.css"
 
 const BlogPage = () => {
 
     return (
-        <div className={styles.container}></div>
+        <main className={styles.container}>
+            <Postcard />
+            <Postcard />
+            <Postcard />
+            <Postcard />
+        </main>
     )
 }
 
