@@ -8,7 +8,7 @@ const Postcard = () => {
       <section className={styles.top}>
         <figure className={styles.imgContainer}>
           <Image
-            src="/postcard.png"
+            src="https://images.pexels.com/photos/19117289/pexels-photo-19117289/free-photo-of-rua-via-construcao-predio.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="postcard"
             fill
             className={styles.img}
@@ -26,7 +26,9 @@ const Postcard = () => {
           cupiditate sunt enim asperiores! Molestias distinctio quo delectus
           quibusdam exercitationem necessitatibus incidunt expedita et!
         </p>
-        <Link href="blog/post">READ MORE</Link>
+        <Link className={styles.link} href="blog/post">
+          Read More
+        </Link>
       </section>
     </div>
   );

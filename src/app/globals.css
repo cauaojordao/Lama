@@ -24,7 +24,7 @@ a {
 
 .container {
   width: 1536px;
-  margin: auto;
+  margin: 0 10%;
   padding: 0 50px;
   min-height: 100vh;
   display: flex;
@@ -65,5 +65,11 @@ a {
 @media (max-width: 640px) {
   .container {
     width: 475px;
+  }
+}
+
+@media (max-width: 475px) {
+  .container {
+    width: 375px;
   }
 }

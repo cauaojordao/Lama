@@ -2,6 +2,7 @@
 import NavLink from "./NavLink";
 import styles from "./Links.module.css";
 import { useState } from "react";
+import Image from "next/image";
 
 const Links = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
@@ -40,7 +41,14 @@ const Links = () => {
           <NavLink item={{ title: "Login", path: "/login" }} />
         )}
       </nav>
-      <button className={styles.menuButton} onClick={() => setToggleSidebar((prev) => !prev)}>Menu</button>
+      <Image
+        src="/menu.png"
+        alt=""
+        width={30}
+        height={30}
+        className={styles.menuButton}
+        onClick={() => setToggleSidebar((prev) => !prev)}
+      />
       {toggleSidebar && (
         <div className={styles.mobileLinks}>
           {links.map((link) => (
