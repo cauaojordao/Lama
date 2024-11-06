@@ -2,10 +2,12 @@
   display: flex;
   gap: 100px;
 }
+
 .imgContainer {
   flex: 1;
   position: relative;
   height: calc(100vh - 200px);
+
   & .img {
     object-fit: cover;
   }
@@ -25,22 +27,26 @@
 .detail {
   display: flex;
   gap: 20px;
+
   & .detailText {
     display: flex;
     flex-direction: column;
     gap: 10px;
+
     & .detailTitle {
       color: gray;
       font-weight: 700;
     }
+
     & .detailValue {
       font-weight: 500;
     }
   }
-  & .avatar {
-    object-fit: cover;
-    border-radius: 50%;
-  }
+}
+
+.avatar {
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .content {
@@ -48,7 +54,7 @@
 }
 
 @media (max-width: 768px) {
-    .imgContainer {
-        display: none;
-    }
+  .imgContainer {
+    display: none;
+  }
 }

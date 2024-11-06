@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./Postcard.module.css";
 import Link from "next/link";
 
-const Postcard = () => {
+const Postcard = ({ post }) => {
   return (
     <div className={styles.container}>
       <section className={styles.top}>
@@ -17,16 +17,9 @@ const Postcard = () => {
         <span className={styles.date}>01.01.2024</span>
       </section>
       <section className={styles.bottom}>
-        <h2 className={styles.title}>
-          Lorem ipsum dolor sit amet consectetur.
-        </h2>
-        <p className={styles.desc}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-          quidem alias, eligendi dolorem libero accusamus perspiciatis
-          cupiditate sunt enim asperiores! Molestias distinctio quo delectus
-          quibusdam exercitationem necessitatibus incidunt expedita et!
-        </p>
-        <Link className={styles.link} href="blog/post">
+        <h2 className={styles.title}>{post.title}</h2>
+        <p className={styles.desc}>{post.body}</p>
+        <Link className={styles.link} href={`/blog/${post.id}`}>
           Read More
         </Link>
       </section>
