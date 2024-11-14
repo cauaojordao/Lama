@@ -8,7 +8,7 @@ const Postcard = ({ post }) => {
       <section className={styles.top}>
         <figure className={styles.imgContainer}>
           <Image
-            src="https://images.pexels.com/photos/19117289/pexels-photo-19117289/free-photo-of-rua-via-construcao-predio.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            src={post.img}
             alt="postcard"
             fill
             className={styles.img}
@@ -18,8 +18,8 @@ const Postcard = ({ post }) => {
       </section>
       <section className={styles.bottom}>
         <h2 className={styles.title}>{post.title}</h2>
-        <p className={styles.desc}>{post.body}</p>
-        <Link className={styles.link} href={`/blog/${post.id}`}>
+        <p className={styles.desc}>{post.desc}</p>
+        <Link className={styles.link} href={`/blog/${post.slug}`}>
           Read More
         </Link>
       </section>

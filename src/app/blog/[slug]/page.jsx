@@ -15,42 +15,43 @@ const getData = async (slug) => {
   return res.json();
 }; */
 
+export const generateMetadata = async ({ params }) => {
+  const { slug } = params;
+  const post = await getPost(slug);
+
+  return {
+    title: post.title,
+    description: post.desc,
+  };
+};
 
 const SinglePostPage = async ({ params }) => {
   const { slug } = await params;
-  
+
   // const post = await getData(slug);
-      const post = await getPost(slug);
+
+  const post = await getPost(slug);
+
   return (
     <main className={styles.container}>
       <figure className={styles.imgContainer}>
-        <Image
-          src="https://images.pexels.com/photos/19117289/pexels-photo-19117289/free-photo-of-rua-via-construcao-predio.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt=""
-          fill
-          className={styles.img}
-        />
+        <Image src={post.img} alt="" fill className={styles.img} />
       </figure>
       <section className={styles.textContainer}>
         <h1 className={styles.title}>{post.title}</h1>
         <div className={styles.detail}>
-          <Image
-            className={styles.avatar}
-            src="https://images.pexels.com/photos/19117289/pexels-photo-19117289/free-photo-of-rua-via-construcao-predio.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt=""
-            width={50}
-            height={50}
-          />
           <Suspense fallback={<div>Loading...</div>}>
             <PostUser userId={post.userId} />
           </Suspense>
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
-            <span className={styles.detailValue}>01.01.2024</span>
+            <span className={styles.detailValue}>
+              {post.createdAt.toString().slice(0, 16)}
+            </span>
           </div>
         </div>
         <div className={styles.content}>
-          <p>{post.body}</p>
+          <p>{post.desc}</p>
         </div>
       </section>
     </main>

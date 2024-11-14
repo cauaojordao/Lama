@@ -29,6 +29,10 @@
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  color: black;
+  background-color: var(--text);
+  display: flex;
+  justify-content: center;
 }
 
 .button:first-child {

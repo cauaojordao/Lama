@@ -22,7 +22,6 @@ const userSchema = new mongoose.Schema(
     },
     img: {
       type: String,
-      default: "",
     },
     isAdmin: {
       type: Boolean,
@@ -46,7 +45,6 @@ const postSchema = new mongoose.Schema(
     },
     img: {
       type: String,
-      default: "",
     },
     userId: {
       type: String,
