@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./Postcard.module.css";
 import Link from "next/link";
+import { formatDate } from "@/lib/utils";
 
 const Postcard = ({ post }) => {
   return (
@@ -14,7 +15,7 @@ const Postcard = ({ post }) => {
             className={styles.img}
           />
         </figure>
-        <span className={styles.date}>01.01.2024</span>
+        <span className={styles.date}>{formatDate(post.createdAt)}</span>
       </section>
       <section className={styles.bottom}>
         <h2 className={styles.title}>{post.title}</h2>
