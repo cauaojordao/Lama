@@ -4,17 +4,9 @@ import { login } from "@/lib/action";
 import styles from "../RegisterForm/RegisterForm.module.css";
 import { useFormState } from "react-dom";
 import Link from "next/link";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
   const [state, formAction] = useFormState(login, undefined);
-
-  const router = useRouter();
-
-  useEffect(() => {
-    state?.success && router.push("/");
-  }, [state?.success, router]);
 
   return (
     <form className={styles.form} action={formAction}>
