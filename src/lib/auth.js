@@ -63,7 +63,7 @@ export const {
             const newUser = new User({
               username: profile.login,
               email: profile.email,
-              image: profile.avatar_url,
+              img: profile.avatar_url,
             });
 
             await newUser.save();

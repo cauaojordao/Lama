@@ -1,44 +1,70 @@
 "use server";
+import { revalidatePath } from "next/cache";
 import { signIn, signOut } from "./auth";
 import { Post, User } from "./models";
 import { connectToDb } from "./utils";
-import { revalidadePath } from "next/cache";
 import bcrypt from "bcryptjs";
 
-export const addPost = async (formData) => {
-  "use server";
-  const { title, desc, slug, img, userId } = Object.fromEntries(formData);
+export const addPost = async (prevState, formData) => {
+  const { title, desc, slug, userId } = Object.fromEntries(formData);
 
   try {
     connectToDb();
-    const newPost = new Post({ title, desc, slug, img, userId });
+    const newPost = new Post({ title, desc, slug, userId });
     await newPost.save();
-    revalidadePath("/blog");
+    revalidatePath("/blog");
+    revalidatePath("/admin");
   } catch (err) {
+    console.log(err)
     return { error: "Failed to connect to db" };
   }
 };
 
 export const deletePost = async (formData) => {
-  "use server";
   const { id } = Object.fromEntries(formData);
 
   try {
     connectToDb();
     await Post.findByIdAndDelete(id);
-    revalidadePath("/blog");
+    revalidatePath("/blog");
+    
+    revalidatePath("/admin");
+  } catch (err) {
+    return { error: "Failed to connect to db" };
+  }
+};
+
+export const addUser = async (prevState, formData) => {
+  const { username, email, password, img } = Object.fromEntries(formData);
+
+  try {
+    connectToDb();
+    const newUser = new User({ username, email, password, img });
+    await newUser.save();
+    revalidatePath("/admin");
+  } catch (err) {
+    return { error: "Something went wrong" };
+  }
+};
+
+export const deleteUser = async ( formData) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectToDb();
+    await Post.deleteMany({ userId: id });
+    await User.findByIdAndDelete(id);
+    revalidatePath("/admin");
   } catch (err) {
     return { error: "Failed to connect to db" };
   }
 };
 
 export const handleGithubLogin = async () => {
-  "use server";
   await signIn("github");
 };
 
 export const handleLogout = async () => {
-  "use server";
   await signOut();
 };
 

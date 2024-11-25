@@ -15,14 +15,13 @@ export const authConfig = {
     async session({ session, token }) {
       if (token) {
         session.user.id = token.id;
+        session.user.img = token.img;
         session.user.isAdmin = token.isAdmin;
 
-        console.log(session);
         return session;
       }
     },
     authorized({ auth, request }) {
-      console.log(auth);
       const user = auth?.user;
       const isOnAdminPanel = request.nextUrl.pathname.startsWith("/admin");
       const isOnBlogPage = request.nextUrl.pathname.startsWith("/blog");
